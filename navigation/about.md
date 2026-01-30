@@ -136,7 +136,7 @@ document.addEventListener("keydown",e=>{
 
 ### Culture, Family, Fun, About Me and A Photo of Me!!!
 - I am 100% Afghan according to my Family tree
-- My family consists of 2 parents 4 siblings 5 uncles 5 aunts 2 grandparents and lots of cousins
+- My family consists of 2 parents 4 siblings 5 uncles 5 aunts 2 grandparents and lots of cousins, My family is pretty big
 - I am a Muslim
 - I want to be a Pilot or a Software Engineer
 
