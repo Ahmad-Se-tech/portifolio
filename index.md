@@ -5,7 +5,7 @@ hide: true
 show_reading_time: false
 ---
 
-Hi! My name is [Your Full Name]
+Hi! My name is Ahmad Sediqi
 
 ### Development Environment
 
@@ -38,9 +38,9 @@ Hi! My name is [Your Full Name]
             Snake Game
         </div>
     </a>
-    <a href="{{site.baseurl}}/turtle" style="text-decoration: none;">
-        <div style="background-color: #FF0000; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
-            Turtle
+    <a href="{{site.baseurl}}/rps" style="text-decoration: none;">
+        <div style="background-color: #0040ffff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold;">
+            Rock Paper Scissors
         </div>
     </a>
 </div>

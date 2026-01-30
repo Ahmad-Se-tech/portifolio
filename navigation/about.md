@@ -5,134 +5,166 @@ permalink: /about/
 comments: true
 ---
 
+<div id="dashboard">
+  <span id="timer">Session: 0s</span> |
+  <span id="views">Hover: 0</span> |
+</div>
+
+<button onclick="toggleTheme()">🌗</button>
+<button onclick="highlightRandom()">🎯</button>
+
+<div class="creative-grid">
+  <div class="confetti">🎉</div>
+  <div class="year">2026</div>
+  <div class="confetti">🎉</div>
+  <div class="plane">✈️</div>
+</div>
+
 ## As a conversation Starter
+- What I do for a living?
+- Where I was born?
+- What religion I am?
 
-Here are some places I have lived.
+Here are the places I have lived.
 
-<comment>
-Flags are made using Wikipedia images
-</comment>
+<comment>Flags are made using Wikipedia images</comment>
+
+<input id="searchBox" placeholder="Search places...">
+<button onclick="sortAZ()">A–Z</button>
+<button onclick="sortZA()">Z–A</button>
+<button onclick="randomFact()">Fun Fact 🎲</button>
+
+<p id="counter"></p>
+<p id="factBox"></p>
 
 <style>
-    /* Style looks pretty compact, 
-       - grid-container and grid-item are referenced the code 
-    */
-    .grid-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Dynamic columns */
-        gap: 10px;
-    }
-    .grid-item {
-        text-align: center;
-    }
-    .grid-item img {
-        width: 100%;
-        height: 100px; /* Fixed height for uniformity */
-        object-fit: contain; /* Ensure the image fits within the fixed height */
-    }
-    .grid-item p {
-        margin: 5px 0; /* Add some margin for spacing */
-    }
+#dashboard{position:sticky;top:0;background:#222;color:#fff;padding:6px;z-index:10}
+body.dark{background:#111;color:#eee}
+.creative-grid{display:grid;grid-template-columns:1fr auto 1fr;justify-items:center;margin:30px 0}
+.year{font-size:3rem}
+.plane{grid-column:1/span 3;animation:fly 6s linear infinite}
+@keyframes fly{from{transform:translateX(-120%)}to{transform:translateX(120%)}}
 
-    .image-gallery {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        gap: 10px;
-        }
-
-    .image-gallery img {
-        max-height: 150px;
-        object-fit: cover;
-        border-radius: 5px;
-    }
+.grid-container{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:15px}
+.grid-item{padding:10px;border-radius:10px;transition:.2s;opacity:0;transform:translateY(20px)}
+.grid-item.show{opacity:1;transform:none}
+.grid-item:hover{box-shadow:0 0 15px gold}
+.grid-item img{width:100%;height:auto;border-radius:5px}
+.star{position:absolute;top:5px;right:8px;cursor:pointer}
+.bar{height:6px;background:lime;margin-top:4px}
 </style>
 
-<!-- This grid_container class is used by CSS styling and the id is used by JavaScript connection -->
-<div class="grid-container" id="grid_container">
-    <!-- content will be added here by JavaScript -->
-</div>
+<div class="grid-container" id="grid_container"></div>
 
 <script>
-    // 1. Make a connection to the HTML container defined in the HTML div
-    var container = document.getElementById("grid_container"); // This container connects to the HTML div
+var container=document.getElementById("grid_container");
+var counter=document.getElementById("counter");
+var factBox=document.getElementById("factBox");
+var views=document.getElementById("views");
+var timerEl=document.getElementById("timer");
+var hoverCount=0,seconds=0;
 
-    // 2. Define a JavaScript object for our http source and our data rows for the Living in the World grid
-    var http_source = "https://upload.wikimedia.org/wikipedia/commons/";
-    var living_in_the_world = [
-        {"flag": "0/01/Flag_of_California.svg", "greeting": "Hey", "description": "California - forever"},
-        {"flag": "b/b9/Flag_of_Oregon.svg", "greeting": "Hi", "description": "Oregon - 9 years"},
-        {"flag": "b/be/Flag_of_England.svg", "greeting": "Alright mate", "description": "England - 2 years"},
-        {"flag": "e/ef/Flag_of_Hawaii.svg", "greeting": "Aloha", "description": "Hawaii - 2 years"},
-    ];
+setInterval(()=>{seconds++;timerEl.textContent=`Session: ${seconds}s`},1000);
 
-    // 3a. Consider how to update style count for size of container
-    // The grid-template-columns has been defined as dynamic with auto-fill and minmax
+var http_source="https://upload.wikimedia.org/wikipedia/commons/";
+var living_in_the_world=[
+{flag:"0/01/Flag_of_California.svg",greeting:"Hey",description:"California - 10 years and so on",score:10},
+{flag:"c/cd/Flag_of_Afghanistan_%282013%E2%80%932021%29.svg",greeting:"سلام",description:"Afghanistan - born and raised here for 5 years",score:5},
+{flag:"9/9a/Flag_of_Spain.svg",greeting:"Hola",description:"Spain - I go here every summer",score:5}
+];
 
-    // 3b. Build grid items inside of our container for each row of data
-    for (const location of living_in_the_world) {
-        // Create a "div" with "class grid-item" for each row
-        var gridItem = document.createElement("div");
-        gridItem.className = "grid-item";  // This class name connects the gridItem to the CSS style elements
-        // Add "img" HTML tag for the flag
-        var img = document.createElement("img");
-        img.src = http_source + location.flag; // concatenate the source and flag
-        img.alt = location.flag + " Flag"; // add alt text for accessibility
+var facts=["Flags represent identity","Some flags evolve","Colors carry meaning"];
 
-        // Add "p" HTML tag for the description
-        var description = document.createElement("p");
-        description.textContent = location.description; // extract the description
+function render(data){
+ container.innerHTML="";
+ data.forEach((loc,i)=>{
+  var item=document.createElement("div");
+  item.className="grid-item";
+  item.draggable=true;
 
-        // Add "p" HTML tag for the greeting
-        var greeting = document.createElement("p");
-        greeting.textContent = location.greeting;  // extract the greeting
+  item.ondragstart=e=>e.dataTransfer.setData("i",i);
+  item.ondragover=e=>e.preventDefault();
+  item.ondrop=e=>{
+    var from=e.dataTransfer.getData("i");
+    data.splice(i,0,data.splice(from,1)[0]);
+    render(data);
+  };
 
-        // Append img and p HTML tags to the grid item DIV
-        gridItem.appendChild(img);
-        gridItem.appendChild(description);
-        gridItem.appendChild(greeting);
+  item.onmouseenter=()=>{hoverCount++;views.textContent=`Hover: ${hoverCount}`};
 
-        // Append the grid item DIV to the container DIV
-        container.appendChild(gridItem);
-    }
+  var img=document.createElement("img"); img.src=http_source+loc.flag;
+  var p=document.createElement("p"); p.textContent=loc.description;
+  var bar=document.createElement("div"); bar.className="bar"; bar.style.width=(loc.score*10)+"%";
+
+  item.append(img,p,bar);
+  container.appendChild(item);
+ });
+
+ counter.textContent=`Showing ${data.length}`;
+ observe();
+}
+
+function observe(){
+ var io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("show")});
+ });
+ document.querySelectorAll(".grid-item").forEach(i=>io.observe(i));
+}
+
+render(living_in_the_world);
+
+function sortAZ(){living_in_the_world.sort((a,b)=>a.description.localeCompare(b.description));render(living_in_the_world)}
+function sortZA(){living_in_the_world.sort((a,b)=>b.description.localeCompare(a.description));render(living_in_the_world)}
+function randomFact(){factBox.textContent=facts[Math.floor(Math.random()*facts.length)]}
+function toggleTheme(){document.body.classList.toggle("dark")}
+function highlightRandom(){
+ var items=document.querySelectorAll(".grid-item");
+ items.forEach(i=>i.style.outline="");
+ var r=items[Math.floor(Math.random()*items.length)];
+ r.style.outline="3px solid red";
+ r.scrollIntoView({behavior:"smooth"});
+}
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="a")sortAZ();
+ if(e.key==="z")sortZA();
+ if(e.key==="/")document.getElementById("searchBox").focus();
+ if(e.key==="t")toggleTheme();
+ if(e.key==="h")highlightRandom();
+});
 </script>
 
-### Journey through Life
+### Culture, Family, Fun, About Me and A Photo of Me!!!
+- I am 100% Afghan according to my Family tree
+- My family consists of 2 parents 4 siblings 5 uncles 5 aunts 2 grandparents and lots of cousins
+- I am a Muslim
+- I want to be a Pilot or a Software Engineer
 
-Here is what I did at those places
+<img width="478" height="500" alt="Image" src="https://github.com/user-attachments/assets/408c3f8a-2bfa-47c4-8d13-afe54ebe07de" />
 
-- 🏫 Lots of Elementary Schools in Tucson, LA, Honolulu, and Glendale (CA)
-- 🏫 Middle and High School in Glendale (CA), Hoover High graduated '77
-- 🎓 Glendale CA Community College, UCLA Extension, LA Wilshire Computer Tech School '77 to '79
-- ⛪ England, London Missionary for Church of Jesus Christ of Latter-day Saints '79 to '81
-- 💼 Culver City, Glendale CA founder at Ashton-Tate, original PC's dBase 2 and 3 '82 to '87
-- 🎓 Eugene Oregon Undergraduate CompSci Degree at University of Oregon (Go Ducks!) '89 to '91
-- 💼 Eugene Oregon, founder and owner @ Microniche `88, Point Control CAD CAM developer '91 to '96
-- 🏢 San Diego CA Qualcomm, Satellite Comm and 1st Mobile OS (BREW) '96 to '19
-- 👨‍🏫 San Diego CA Teacher of Computer Science @ Del Norte High School San Diego '19 to present
+#### Stuff I like
+<div class="grid-container" id="roblox_grid"></div>
 
-### Culture, Family, and Fun
+<script>
+var robloxContainer=document.getElementById("roblox_grid");
 
-Everything for me, as for many others, revolves around family and faith.
+var projects=[
+{image:"https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=400",title:"Soccer",description:"My first sport I joined when I was 8 and this is still my favorite sport."},
+{image:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400",title:"Rich City",description:"I want to live in Dubai one day and work for a big company or start a business."},
+{image:"https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400",title:"Sweets",description:"I love sweets, especially cheesecake. I usually eat cake while drinking tea."}
+];
 
-- My mother told me that I was Danish, English. and Irish, here is my researched [family tree]({{site.baseurl}}/images/about/familytree.png)
-- My family is pretty big as I have been married twice, my 1st wife passed away.  We have had 5 kids, 4 adopted by me, 1 biological.  Plus, there are three grandkids.  My name to my grandkids is Abuilito.
-- The gallery of pics has some of my family, fun, culture and faith memories.
+projects.forEach(p=>{
+ var item=document.createElement("div");
+ item.className="grid-item";
 
-<comment>
-Gallery of Pics, scroll to the right for more ...
-</comment>
-<div class="image-gallery">
-  <img src="{{site.baseurl}}/images/about/missionary.jpg" alt="Image 1">
-  <img src="{{site.baseurl}}/images/about/john_tamara.jpg" alt="Image 2">
-  <img src="{{site.baseurl}}/images/about/tamara_fam.jpg" alt="Image 3">
-  <img src="{{site.baseurl}}/images/about/surf.jpg" alt="Image 4">
-  <img src="{{site.baseurl}}/images/about/john_lora.jpg" alt="Image 5">
-  <img src="{{site.baseurl}}/images/about/lora_fam.jpg" alt="Image 6">
-  <img src="{{site.baseurl}}/images/about/lora_fam2.jpg" alt="Image 7">
-  <img src="{{site.baseurl}}/images/about/pj_party.jpg" alt="Image 8">
-  <img src="{{site.baseurl}}/images/about/trent_family.png" alt="Image 9">
-  <img src="{{site.baseurl}}/images/about/claire.jpg" alt="Image 10">
-  <img src="{{site.baseurl}}/images/about/grandkids.jpg" alt="Image 11">
-  <img src="{{site.baseurl}}/images/about/farm.jpg" alt="Image 12">
-</div>
+ var img=document.createElement("img"); img.src=p.image;
+ var t=document.createElement("p"); t.textContent=p.title;
+ var d=document.createElement("p"); d.textContent=p.description;
+
+ item.append(img,t,d);
+ robloxContainer.appendChild(item);
+});
+
+setTimeout(()=>observe(),100);
+</script>
