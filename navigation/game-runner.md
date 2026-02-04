@@ -13,7 +13,6 @@ permalink: /rpg/game
 
 
 {% capture challenge1 %}
-
 Run the basic desert adventure game. Use WASD or arrow keys to move Chill Guy around the desert. Walk up to R2D2 to trigger a mini-game!
 {% endcapture %}
 
@@ -30,7 +29,7 @@ class CustomLevel {
        const height = gameEnv.innerHeight;
        const bgData = {
            name: 'alien_world',
-         {image:"https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=400"",
+           src: path + "/images/about/miami.webp",
            pixels: { height: 600, width: 1000 }
        };
 
