@@ -1,6 +1,6 @@
 ---
 layout: post
-courses: { csse: {week: 5} }
+courses: CSSE
 title: Homework Summation
 permalink: /homeworkblog
 author: Ahmad Sediqi
