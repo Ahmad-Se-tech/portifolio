@@ -139,6 +139,9 @@ document.addEventListener("keydown",e=>{
 - My family consists of 2 parents 4 siblings 5 uncles 5 aunts 2 grandparents and lots of cousins, My family is pretty big
 - I am a Muslim
 - I want to be a Pilot or a Software Engineer
+- I am a Black Belt in Taekwondo
+- I played soccer ever since I lived in Spain
+- My Dream Career is to become a professional soccer player 
 
 <img width="478" height="500" alt="Image" src="https://github.com/user-attachments/assets/408c3f8a-2bfa-47c4-8d13-afe54ebe07de" />
 
