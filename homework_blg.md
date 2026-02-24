@@ -1,8 +1,6 @@
 ---
 layout: post
 courses: { csse: {week: 5} }
-codemirror: true
-microblog: true
 title: Homework Summation
 permalink: /homeworkblog
 author: Ahmad Sediqi
