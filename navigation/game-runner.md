@@ -17,95 +17,52 @@ Run the basic desert adventure game. Use WASD or arrow keys to move Chill Guy ar
 {% endcapture %}
 
 
-{% capture code1 %}
-import GameControl from '/assets/js/adventureGame/GameEngine/GameControl.js';
-import GameEnvBackground from '/assets/js/adventureGame/GameEngine/GameEnvBackground.js';
-
-import GameControl from '/assets/js/adventureGame/GameEngine/GameControl.js';
-import GameEnvBackground from '/assets/js/adventureGame/GameEngine/GameEnvBackground.js';
-import Player from '/assets/js/adventureGame/GameEngine/Player.js';
-import Npc from '/assets/js/adventureGame/GameEngine/Npc.js';
+// Import for GameRunner
+import GameControl from '/assets/js/GameEnginev1/essentials/GameControl.js';
+// Level Code
+import GameEnvBackground from '/assets/js/GameEnginev1/essentials/GameEnvBackground.js';
+import Player from '/assets/js/GameEnginev1/essentials/Player.js';
 
 class CustomLevel {
   constructor(gameEnv) {
     const path = gameEnv.path;
     const width = gameEnv.innerWidth;
     const height = gameEnv.innerHeight;
-
-    // ── Background ──────────────────────────────────────────────────────────
     const bgData = {
-      name: 'alien_world',
-      src: path + "/images/about/miami.webp",
-      pixels: { height: 600, width: 1000 }
+        name: 'custom_bg',
+        src: path + "/images/gamebuilder/clouds.jpg",
+        pixels: { height: 720, width: 1280 }
     };
-
-    // ── Player ──────────────────────────────────────────────────────────────
-    // Sprite sheet with walk/idle/attack animations
     const playerData = {
-      name: 'hero',
-      // Swap this src for any sprite sheet you have in your assets
-      src: path + "/images/gamify/mario.png",
-      pixels: { height: 256, width: 512 },   // full sprite-sheet size
-      orientation: { rows: 4, cols: 8 },      // layout of frames
-      down:  { row: 0, start: 0, columns: 3 },
-      left:  { row: 1, start: 0, columns: 3 },
-      right: { row: 2, start: 0, columns: 3 },
-      up:    { row: 3, start: 0, columns: 3 },
-      idle:  { row: 0, start: 0, columns: 1 },
-      scale: 2,
-      // Starting position (fraction of canvas)
-      xPercentage: 0.2,
-      yPercentage: 0.8,
-      // Physics
-      speed: 4,
+      id: 'Hero',
+      src: path + "/images/gamify/chillguy.png",
+      SCALE_FACTOR: 5,
+      STEP_FACTOR: 1000,
+      ANIMATION_RATE: 50,
+      INIT_POSITION: { x: 100, y: 300 },
+      pixels: { height: 512, width: 384 },
+      orientation: { rows: 4, columns: 3 },
+      down: { row: 0, start: 0, columns: 3 },
+      downRight: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: Math.PI/16 },
+      downLeft: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: -Math.PI/16 },
+      right: { row: Math.min(1, 4 - 1), start: 0, columns: 3 },
+      left: { row: Math.min(2, 4 - 1), start: 0, columns: 3 },
+      up: { row: Math.min(3, 4 - 1), start: 0, columns: 3 },
+      upRight: { row: Math.min(1, 4 - 1), start: 0, columns: 3, rotate: -Math.PI/16 },
+      upLeft: { row: Math.min(2, 4 - 1), start: 0, columns: 3, rotate: Math.PI/16 },
       hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
-      // Keyboard bindings
-      keypress: {
-        up:    ['ArrowUp',    'w', 'W'],
-        down:  ['ArrowDown',  's', 'S'],
-        left:  ['ArrowLeft',  'a', 'A'],
-        right: ['ArrowRight', 'd', 'D'],
-      },
+      keypress: { up: 87, left: 65, down: 83, right: 68 }
     };
 
-    // ── NPC ─────────────────────────────────────────────────────────────────
-    const npcData = {
-      name: 'townsfolk',
-      // Swap for any NPC sprite you have
-      src: path + "/images/gamify/tux.png",
-      pixels: { height: 256, width: 256 },
-      orientation: { rows: 4, cols: 4 },
-      down:  { row: 0, start: 0, columns: 4 },
-      left:  { row: 1, start: 0, columns: 4 },
-      right: { row: 2, start: 0, columns: 4 },
-      up:    { row: 3, start: 0, columns: 4 },
-      idle:  { row: 0, start: 0, columns: 1 },
-      scale: 2,
-      xPercentage: 0.7,
-      yPercentage: 0.8,
-      hitbox: { widthPercentage: 0.45, heightPercentage: 0.2 },
-      // Simple patrol behaviour – move left/right between two x fractions
-      patrol: { minXPercentage: 0.55, maxXPercentage: 0.85, speed: 1.5 },
-      // Dialogue shown when the player walks up and presses 'e'
-      dialogue: [
-        "Welcome to Miami, stranger!",
-        "Watch out – this city never sleeps.",
-        "Press E again to close this dialog."
-      ],
-      interact: 'e',   // key to start / advance dialogue
-    };
-
-    // ── Class list (order = render order) ───────────────────────────────────
     this.classes = [
       { class: GameEnvBackground, data: bgData },
-      { class: Player,            data: playerData },
-      { class: Npc,               data: npcData },
+      { class: Player, data: playerData },
     ];
   }
 }
-
-export { GameControl };
 export const gameLevelClasses = [CustomLevel];
+// Export for game runner
+export { GameControl };
 {% endcapture %}
 
 
