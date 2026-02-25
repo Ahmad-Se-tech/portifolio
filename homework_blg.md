@@ -44,7 +44,7 @@ This page summarizes each JavaScript homework with a short note on what was lear
 
 **Nested Conditionals:** Nesting conditionals inside each other felt a bit like a decision tree — each layer narrows things down further. I practiced using them inside loops and with objects to handle more complex logic.
 
-<a href="{{site.baseurl}}/js/nested-conditionals" style="text-decoration:none; background-color:#00BCD4; color:black; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Nested Conditionals</a>
+<a href="{{site.baseurl}}/js/nested-conditionals" style="text-decoration:none; background-color:#000000; color:black; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Nested Conditionals</a>
 
 ---
 
@@ -56,7 +56,7 @@ This page summarizes each JavaScript homework with a short note on what was lear
 
 **Iterations:** Loops really tied everything together — I got a solid understanding of how to repeat actions using for and while loops, and saw how iteration shows up in almost every other topic from this lesson.
 
-<a href="{{site.baseurl}}/js/iterations" style="text-decoration:none; background-color:#00BCD4; color:black; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Iterations</a>
+<a href="{{site.baseurl}}/js/iterations" style="text-decoration:none; background-color: #000000; color:black; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Iterations</a>
 
 
 
