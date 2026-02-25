@@ -33,14 +33,4 @@ The Night at the Muesem was a really great learning experience which helped me u
 
 ---
 
-### Here are Some photos of Me and the projects at N@tm  
 
-<div style="display:grid; grid-template-columns: repeat(3,1fr); gap:8px; margin-top:16px;">
-  <img src="{{site.baseurl}}/images/natm/mg.JPG" style="width:100%; border-radius:6px;">
-  <img src="{{site.baseurl}}/images/natm/image2.jpeg" style="width:100%; border-radius:6px;">
-  <img src="{{site.baseurl}}/images/natm/image3.jpeg" style="width:100%; border-radius:6px;">
-  <img src="{{site.baseurl}}/images/natm/image4.jpeg" style="width:100%; border-radius:6px;">
-  <img src="{{site.baseurl}}/images/natm/image5.jpeg" style="width:100%; border-radius:6px;">
-  <img src="{{site.baseurl}}/images/natm/image6.jpeg" style="width:100%; border-radius:6px;">
-  <img src="{{site.baseurl}}/images/natm/image7.JPG" style="width:100%; border-radius:6px; grid-column: span 3;">
-</div>
