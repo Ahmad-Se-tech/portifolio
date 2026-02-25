@@ -2,7 +2,7 @@
 layout: post
 courses: CSSE
 title: My Key Accomplishments
-permalink: /keyaccomplishment
+permalink: /keyaccomplishment   
 author: Ahmad Sediqi 
 ---
 
