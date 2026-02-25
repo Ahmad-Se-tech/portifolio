@@ -1,18 +1,19 @@
 ---
 layout: post
 courses: CSSE
-title: My Key Accomplishments
-permalink: /keyaccomplishment
+title: Night at the Muesum 
+permalink: /natmblg
 author: Ahmad Sediqi 
 ---
 
-# Key Accomplishments
-This page talks about the accomplishments I made in Tri 1
+# Night at the Muesum 
+This page talks about what happened at the Night at Muesum 
 
 ---
 
-**Tools:** 
-At the beginning of the Tri 
+**Murder Mystery:** 
+This was my groups project it was a game and I think it was kinda bad
+
 
 ---
 
