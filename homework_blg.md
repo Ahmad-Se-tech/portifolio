@@ -30,7 +30,7 @@ This page summarizes each JavaScript homework with a short note on what was lear
 
 ---
 
-**Booleans:** I taught the Booleans lesson for this unit — I led the class through boolean values, logical operators, and how to combine multiple conditions into meaningful checks.
+**Booleans:** I taught the Booleans lesson for this unit — I led the class with my two companions Ashi and Matt, through boolean values, logical operators, and how to combine multiple conditions into meaningful checks.
 
 <a href="{{site.baseurl}}/js/booleans" style="text-decoration:none; background-color:#FFD700; color:black; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Booleans</a>
 
@@ -54,6 +54,14 @@ This page summarizes each JavaScript homework with a short note on what was lear
 
 ---
 
-**Iterations:** Loops really tied everything together — I got a solid understanding of how to repeat actions using for and while loops, and saw how iteration shows up in almost every other topic from this unit.
+**Iterations:** Loops really tied everything together — I got a solid understanding of how to repeat actions using for and while loops, and saw how iteration shows up in almost every other topic from this lesson.
+
+<a href="{{site.baseurl}}/js/iterations" style="text-decoration:none; background-color:#FF69B4; color:white; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Strings</a>
+
+
+
+
+
+
 
 ---
