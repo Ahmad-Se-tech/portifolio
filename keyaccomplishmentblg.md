@@ -30,6 +30,6 @@ By teaching people and being taught by others I learned about many new topics I 
 These were the Key accomplishments that I had 
 thank you for visiting my site
 
-<img width="214" height="148" alt="Image" src="https://github.com/user-attachments/assets/3435aed0-0bc0-4b01-81a0-cda950aaa498" />
+![Image](https://github.com/user-attachments/assets/3435aed0-0bc0-4b01-81a0-cda950aaa498)
 
 ---
