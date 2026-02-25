@@ -56,7 +56,7 @@ This page summarizes each JavaScript homework with a short note on what was lear
 
 **Iterations:** Loops really tied everything together — I got a solid understanding of how to repeat actions using for and while loops, and saw how iteration shows up in almost every other topic from this lesson.
 
-<a href="{{site.baseurl}}/js/iterations" style="text-decoration:none; background-color:#FF69B4; color:white; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Iterations</a>
+<a href="{{site.baseurl}}/js/iterations" style="text-decoration:none; background-color:#00BCD4; color:black; padding:10px 20px; border-radius:5px; font-weight:bold; display:inline-block;">Iterations</a>
 
 
 
