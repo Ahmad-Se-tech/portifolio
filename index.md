@@ -34,7 +34,7 @@ Hi! My name is Ahmad and this is my progress and result of CSSE tri 1
 
 <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
 
-<a href="/tablegroup/snake" style="text-decoration: none;">
+<a href="/portifolio/snake" style="text-decoration: none;">
     <div style="background-color: #6ca537ff; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;"
          onmouseover="this.style.backgroundColor='#d0e86b';" 
          onmouseout="this.style.backgroundColor='#6ca537ff';">
@@ -42,7 +42,7 @@ Hi! My name is Ahmad and this is my progress and result of CSSE tri 1
     </div>   
   </a>
 
-  <a href="/tablegroup/connect4" style="text-decoration: none;">
+  <a href="/portifolio/connect4" style="text-decoration: none;">
     <div style="background-color: #b4ce4bff; color: black; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;"
          onmouseover="this.style.backgroundColor='#d0e86b';" 
          onmouseout="this.style.backgroundColor='#b4ce4bff';">
@@ -50,7 +50,7 @@ Hi! My name is Ahmad and this is my progress and result of CSSE tri 1
     </div>   
   </a>
 
-  <a href="/tablegroup/breakout" style="text-decoration: none;">
+  <a href="/portifolio/breakout" style="text-decoration: none;">
     <div style="background-color: #3e6cbdff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;"
          onmouseover="this.style.backgroundColor='#5a82e0';" 
          onmouseout="this.style.backgroundColor='#3e6cbdff';">
@@ -58,7 +58,7 @@ Hi! My name is Ahmad and this is my progress and result of CSSE tri 1
     </div>
   </a>
 
-  <a href="/tablegroup/cookie-clicker" style="text-decoration: none;">
+  <a href="/portifolio/cookie-clicker" style="text-decoration: none;">
     <div style="background-color: #28300aff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;"
          onmouseover="this.style.backgroundColor='#404b7a';" 
          onmouseout="this.style.backgroundColor='#28300aff';">
@@ -66,7 +66,7 @@ Hi! My name is Ahmad and this is my progress and result of CSSE tri 1
     </div>
   </a>
 
-  <a href="/tablegroup/rock-paper-scissor" style="text-decoration: none;">
+  <a href="/portifolio/rock-paper-scissor" style="text-decoration: none;">
     <div style="background-color: #6a1292ff; color: white; padding: 10px 20px; border-radius: 5px; font-weight: bold; transition: 0.3s; text-align: center; cursor: pointer;"
          onmouseover="this.style.backgroundColor='#404b7a';" 
          onmouseout="this.style.backgroundColor='#6a1292ff';">
