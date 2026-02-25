@@ -66,6 +66,19 @@ layout: opencs
     const savedTheme = localStorage.getItem("theme") || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     setTheme(savedTheme);
 
+    // Enforce inline background/color to override any remote-theme defaults
+    (function enforceInlineColors(){
+      if (document.body.classList.contains('dark')){
+        document.documentElement.style.backgroundColor = '#0b0f14';
+        document.body.style.backgroundColor = '#0b0f14';
+        document.body.style.color = '#e6eef5';
+      } else {
+        document.documentElement.style.backgroundColor = '#ffffff';
+        document.body.style.backgroundColor = '#ffffff';
+        document.body.style.color = '#0b1220';
+      }
+    })();
+
     // Toggle theme on button click
     toggleButton.addEventListener("click", () => {
       const newTheme = body.classList.contains("dark") ? "light" : "dark";
