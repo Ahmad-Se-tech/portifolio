@@ -19,7 +19,7 @@ description: "Class of 2028"
 owner_name: Ahmad Sediqi
 github_username: Ahmad-Se-tech 
 github_repo: "portifolio" 
-baseurl: "" # empty for local development; set to "/portifolio" before GitHub Pages deploy
+baseurl: "/portifolio" # set for GitHub Pages deployment (use "" locally)
 future: true
 
 # Build settings

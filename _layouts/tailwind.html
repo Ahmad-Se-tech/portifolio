@@ -62,8 +62,8 @@ layout: opencs
       toggleButton.innerHTML = theme === "dark" ? "☀️ Light Mode" : "🌙 Dark Mode";
     }
 
-    // Load saved theme
-    const savedTheme = localStorage.getItem("theme") || "light";
+    // Load saved theme, fall back to OS preference (dark if available)
+    const savedTheme = localStorage.getItem("theme") || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
     setTheme(savedTheme);
 
     // Toggle theme on button click
